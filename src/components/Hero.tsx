@@ -19,7 +19,7 @@ const Hero = () => {
   }, []);
 
   const handleAccessSystem = () => {
-    window.open('https://portal-musetera.netlify.app/login', '_blank', 'noopener,noreferrer');
+    window.open('https://portal.musetera.com.br/login', '_blank', 'noopener,noreferrer');
   };
 
   const handleWhatsApp = () => {

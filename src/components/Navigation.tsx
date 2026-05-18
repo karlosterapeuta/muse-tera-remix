@@ -36,7 +36,7 @@ const Navigation = () => {
   ];
 
   const handleAccessSystem = () => {
-    window.open('https://portal-musetera.netlify.app/login', '_blank', 'noopener,noreferrer');
+    window.open('https://portal.musetera.com.br/login', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -98,13 +98,6 @@ const Navigation = () => {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
             <Button 
-              variant="ghost" 
-              className="text-muted-foreground hover:text-foreground hover:bg-secondary font-medium text-sm"
-              onClick={handleAccessSystem}
-            >
-              Entrar
-            </Button>
-            <Button 
               className="relative overflow-hidden bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-500 text-white font-semibold shadow-lg shadow-primary/20 transition-all duration-300 group"
               onClick={handleAccessSystem}
             >
@@ -151,19 +144,8 @@ const Navigation = () => {
             ))}
             <div className="flex flex-col space-y-3 pt-4 mt-4 border-t border-border">
               <Button 
-                variant="ghost" 
-                className="justify-center text-muted-foreground hover:text-foreground hover:bg-secondary animate-fade-in"
-                style={{ animationDelay: '300ms' }}
-                onClick={() => {
-                  handleAccessSystem();
-                  setIsMenuOpen(false);
-                }}
-              >
-                Entrar
-              </Button>
-              <Button 
                 className="relative overflow-hidden bg-gradient-to-r from-primary to-purple-600 text-white justify-center font-semibold animate-fade-in"
-                style={{ animationDelay: '350ms' }}
+                style={{ animationDelay: '300ms' }}
                 onClick={() => {
                   handleAccessSystem();
                   setIsMenuOpen(false);
