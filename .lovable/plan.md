@@ -1,69 +1,44 @@
-# Apontar musetera.com.br para o app publicado no Lovable
+# Apontar musetera.com.br para o deploy na Netlify
 
-Você quer que o domínio `musetera.com.br` (raiz) e `www.musetera.com.br` mostrem o site `https://muse-remix-magic.lovable.app`.
+Objetivo: fazer `musetera.com.br` e `www.musetera.com.br` servirem o site que já está publicado na Netlify (`effervescent-fenglisu-80ed28.netlify.app`).
 
-Como o DNS do `musetera.com.br` está gerenciado dentro da Netlify (vi os registros `bot.`, `portal.`, `comunidade.` etc.), você fará tudo de dentro do painel **DNS da Netlify** + painel do **Lovable**.
+Como o DNS do domínio já é gerenciado pela própria Netlify (Netlify DNS), o processo é direto: basta vincular o domínio ao site dentro do painel da Netlify. Você **não precisa** criar registros A/CNAME manualmente — a Netlify configura tudo sozinha.
 
-> Importante: o domínio raiz vai apontar para o **Lovable**, não para a Netlify. O deploy da Netlify (`effervescent-fenglisu-80ed28.netlify.app`) continua existindo, mas não será mais acessado por esse domínio. Se preferir manter o deploy da Netlify no domínio, me avise — o caminho é diferente.
+## Passo 1 — Adicionar o domínio ao site na Netlify
 
-## Passo 1 — Adicionar o domínio no Lovable
+1. Acesse https://app.netlify.com e abra o site `effervescent-fenglisu-80ed28`.
+2. Vá em **Site configuration → Domain management** (ou **Domains** no menu lateral).
+3. Em **Custom domains**, clique em **Add a domain**.
+4. Digite `musetera.com.br` e confirme.
+5. A Netlify vai detectar que o domínio já está no Netlify DNS da sua conta e vinculá-lo automaticamente.
+6. Repita o processo para adicionar `www.musetera.com.br`.
 
-1. Abra **Project Settings → Domains** no Lovable.
-2. Clique em **Connect Domain**.
-3. Digite `musetera.com.br` e confirme.
-4. Repita e adicione também `www.musetera.com.br`.
-5. O Lovable vai te mostrar 2 tipos de registro para criar no DNS:
-   - Um **A record** com valor `185.158.133.1`
-   - Um **TXT record** chamado `_lovable` com um valor de verificação único (algo como `lovable_verify=ABC123...`)
-6. **Copie esses valores** — você vai colá-los no próximo passo.
+## Passo 2 — Definir o domínio primário
 
-## Passo 2 — Criar os registros DNS na Netlify
+1. Ainda em **Domain management**, encontre `musetera.com.br` na lista.
+2. Clique nos três pontinhos (⋯) ao lado dele e escolha **Set as primary domain**.
+3. A Netlify criará automaticamente um redirect de `www.musetera.com.br` → `musetera.com.br`.
 
-No painel da Netlify em **DNS → musetera.com.br**, clique em **Add new record** e crie:
+## Passo 3 — Verificar / limpar registros DNS conflitantes
 
-### Registro 1 — domínio raiz
-- Tipo: `A`
-- Nome: deixe em branco (ou `@`)
-- Valor: `185.158.133.1`
-- TTL: 3600
+No painel **DNS → musetera.com.br**, confirme que existem registros do tipo `NETLIFY` (ou `A`/`ALIAS`) apontando para o site. A própria Netlify cria esses registros ao adicionar o domínio. Se sobrou algum registro antigo apontando para o Lovable (`185.158.133.1`) ou para outro destino na raiz (`@`) ou em `www`, **apague-os** para evitar conflito.
 
-### Registro 2 — subdomínio www
-- Tipo: `A`
-- Nome: `www`
-- Valor: `185.158.133.1`
-- TTL: 3600
+Os subdomínios já existentes (`bot.`, `portal.`, `comunidade.` etc.) podem permanecer — não interferem.
 
-### Registro 3 — verificação de propriedade
-- Tipo: `TXT`
-- Nome: `_lovable`
-- Valor: o código `lovable_verify=...` que o Lovable mostrou
-- TTL: 3600
+## Passo 4 — Aguardar SSL (HTTPS)
 
-## Passo 3 — Remover registros conflitantes (se existirem)
+1. Em **Domain management → HTTPS**, a Netlify provisiona o certificado Let's Encrypt automaticamente.
+2. Normalmente leva de poucos minutos até 1 hora. Quando aparecer **"Your site has HTTPS enabled"**, está pronto.
+3. Se demorar, clique em **Verify DNS configuration** e depois em **Provision certificate**.
 
-Antes de salvar, verifique se já existe algum registro tipo `A`, `CNAME`, `NETLIFY` ou `ALIAS` apontando para a raiz (`musetera.com.br` sem subdomínio) ou para `www`. Se existir, **delete** — senão vai conflitar com os novos registros. Os subdomínios já existentes (`bot.`, `portal.`, `comunidade.`) podem ficar, eles não interferem.
+## Resultado final
 
-## Passo 4 — Aguardar verificação e SSL
-
-1. Volte ao Lovable em **Project Settings → Domains**.
-2. O status do domínio vai passar por: **Verifying → Setting up → Active**.
-3. Normalmente leva de 10 minutos a 1 hora. O máximo é 72h por causa da propagação DNS.
-4. Quando ficar **Active**, o `https://` é provisionado automaticamente.
-
-## Passo 5 — Escolher domínio primário
-
-No Lovable, marque `musetera.com.br` (sem www) como **Primary**. O `www.musetera.com.br` vai redirecionar automaticamente para ele.
-
-## Resumo dos valores que você vai usar
-
-| Tipo | Nome | Valor |
-|------|------|-------|
-| A | @ (raiz) | 185.158.133.1 |
-| A | www | 185.158.133.1 |
-| TXT | _lovable | (o código que o Lovable te mostrar) |
+- `https://musetera.com.br` → serve o site da Netlify
+- `https://www.musetera.com.br` → redireciona para `https://musetera.com.br`
+- `https://muse-remix-magic.lovable.app` continua acessível separadamente (versão publicada no Lovable), mas não é mais necessária para o domínio.
 
 ## Detalhes técnicos
 
-- Esses passos não alteram nenhum arquivo do projeto — é tudo configuração de DNS e do painel do Lovable.
-- O deploy atual na Netlify continua acessível pela URL `effervescent-fenglisu-80ed28.netlify.app`, mas o domínio personalizado passará a servir a versão publicada no Lovable.
-- Se quiser que o domínio aponte para a Netlify (e não para o Lovable), o caminho é outro: adicionar o domínio dentro da Netlify (no projeto `effervescent-fenglisu-80ed28`) e deixar os registros A/AAAA apontando para os IPs da Netlify. Me avise se for esse o caso.
+- Como o domínio usa **Netlify DNS** (e não DNS externo como Registro.br/Cloudflare), você não precisa mexer manualmente em registros A/CNAME — a Netlify automatiza.
+- Se em algum momento você quiser voltar a apontar para o Lovable, basta remover o domínio do site na Netlify e seguir o fluxo de **Project Settings → Domains** dentro do Lovable.
+- Nenhum arquivo do projeto precisa ser alterado: o `netlify.toml` já existe e o deploy já está rodando.
