@@ -586,7 +586,7 @@
   }
   
   .badge-glow {
-    @apply badge-premium;
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-white border border-gray-200 shadow-sm;
     animation: pulse-glow-light 2s ease-in-out infinite;
   }
 
