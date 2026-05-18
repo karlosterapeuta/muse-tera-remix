@@ -243,36 +243,42 @@ const Pricing = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
-            <Card key={index} className={`relative ${plan.popular ? 'pricing-popular lg:scale-105 shadow-xl border-primary/20' : 'hover-glow-enhanced glass-card-premium'}`}>
+            <Card key={index} className={`relative overflow-hidden ${plan.popular ? 'lg:scale-105 shadow-2xl shadow-indigo-500/10 border border-indigo-500/40 bg-slate-900' : 'hover-glow-enhanced glass-card-premium'}`}>
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold flex items-center space-x-2 shadow-lg shadow-purple-500/20">
-                    <Star className="h-4 w-4 fill-white" />
-                    <span>Mais Popular</span>
+                <>
+                  {/* Subtle background glow */}
+                  <div className="pointer-events-none absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/10 blur-3xl rounded-full" />
+                  <div className="pointer-events-none absolute -bottom-24 -left-24 w-48 h-48 bg-violet-500/10 blur-3xl rounded-full" />
+
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <div className="bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-5 py-2 rounded-full text-sm font-semibold flex items-center space-x-2 shadow-lg shadow-indigo-500/30 uppercase tracking-wider">
+                      <Star className="h-4 w-4 fill-white" />
+                      <span>Mais Popular</span>
+                    </div>
                   </div>
-                </div>
+                </>
               )}
 
-              <CardHeader className="text-center pb-4">
-                <h3 className="text-2xl font-bold text-foreground">{plan.name}</h3>
-                <p className="text-muted-foreground">{plan.description}</p>
+              <CardHeader className="relative text-center pb-4">
+                <h3 className={`text-2xl font-bold ${plan.popular ? 'bg-gradient-to-r from-slate-200 via-indigo-200 to-indigo-400 bg-clip-text text-transparent' : 'text-foreground'}`}>{plan.name}</h3>
+                <p className={plan.popular ? 'text-slate-400' : 'text-muted-foreground'}>{plan.description}</p>
                 <div className="pt-4">
-                  <span className="text-4xl lg:text-5xl font-bold gradient-text">{plan.price}</span>
-                  <span className="text-muted-foreground">{plan.period}</span>
+                  <span className={`text-4xl lg:text-5xl font-bold ${plan.popular ? 'bg-gradient-to-r from-white via-indigo-100 to-indigo-300 bg-clip-text text-transparent' : 'gradient-text'}`}>{plan.price}</span>
+                  <span className={plan.popular ? 'text-slate-400' : 'text-muted-foreground'}>{plan.period}</span>
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-6">
+              <CardContent className="relative space-y-6">
                 {plan.popular && (
-                  <div className="rounded-lg border border-rose-500/30 bg-gradient-to-r from-rose-500/10 to-orange-500/10 p-3 space-y-1">
+                  <div className="rounded-lg border border-indigo-400/20 bg-indigo-500/10 p-3 space-y-1">
                     <div className="flex items-center gap-2">
                       <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500" />
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500" />
                       </span>
-                      <span className="text-sm font-bold text-rose-400">⚡ Restam apenas 5 vagas neste preço</span>
+                      <span className="text-sm font-semibold text-indigo-300">⚡ Restam apenas 5 vagas neste preço</span>
                     </div>
-                    <p className="text-xs text-rose-300/80 pl-4">Oferta válida só hoje · não perca</p>
+                    <p className="text-xs text-indigo-200/70 pl-4">Oferta válida só hoje · não perca</p>
                   </div>
                 )}
 
