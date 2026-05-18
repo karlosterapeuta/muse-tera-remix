@@ -292,14 +292,14 @@ const Pricing = () => {
                 <ul className="space-y-3">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center space-x-3">
-                      <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                      <span className="text-muted-foreground">{feature}</span>
+                      <Check className={`h-5 w-5 flex-shrink-0 ${plan.popular ? 'text-indigo-400' : 'text-green-500'}`} />
+                      <span className={plan.popular ? 'text-slate-300' : 'text-muted-foreground'}>{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <Button
-                  className={`w-full py-3 text-lg font-semibold ${plan.popular ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg shadow-primary/20' : 'border-2 border-border hover:border-primary text-foreground hover:text-primary bg-transparent'} transition-all duration-300`}
+                  className={`w-full py-3 text-lg font-semibold ${plan.popular ? 'bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-xl shadow-indigo-600/30' : 'border-2 border-border hover:border-primary text-foreground hover:text-primary bg-transparent'} transition-all duration-300`}
                   onClick={() => {
                     setShowPixQRCode(null);
                     setActiveModal(plan.key);
