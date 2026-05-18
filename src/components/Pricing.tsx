@@ -270,15 +270,15 @@ const Pricing = () => {
 
               <CardContent className="relative space-y-6">
                 {plan.popular && (
-                  <div className="rounded-xl border-2 border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-indigo-500/10 to-violet-500/10 p-4 space-y-2 shadow-lg shadow-amber-500/10 animate-pulse">
+                  <div className="rounded-xl border-2 border-amber-500/50 bg-gradient-to-br from-amber-500/20 via-orange-500/10 to-violet-500/10 p-4 space-y-2 shadow-[0_0_25px_-5px_rgba(245,158,11,0.3)]">
                     <div className="flex items-center gap-2">
                       <span className="relative flex h-3 w-3">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-90" />
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500" />
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
                       </span>
-                      <span className="text-base font-bold text-amber-300 tracking-wide">⚡ Restam apenas 5 vagas neste preço</span>
+                      <span className="text-lg font-extrabold text-amber-300 tracking-wide drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]">⚡ Restam apenas 5 vagas neste preço</span>
                     </div>
-                    <p className="text-sm font-semibold text-amber-200/80 pl-7 uppercase tracking-wider">Oferta válida só hoje · não perca</p>
+                    <p className="text-sm font-bold text-amber-200/90 pl-7 uppercase tracking-widest">Oferta válida só hoje · não perca</p>
                   </div>
                 )}
 
