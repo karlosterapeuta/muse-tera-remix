@@ -31,7 +31,7 @@ const setNavOffset = (px: number) => {
 };
 
 const PromoBar = () => {
-  const [remaining, setRemaining] = useState<number>(() => getRemaining());
+  const [remaining, setRemaining] = useState<number>(DURATION_MS);
   const [closed, setClosed] = useState(false);
 
   useEffect(() => {
@@ -42,6 +42,7 @@ const PromoBar = () => {
       return;
     }
     setNavOffset(40);
+    setRemaining(getRemaining());
     const id = window.setInterval(() => {
       setRemaining(getRemaining());
     }, 1000);
