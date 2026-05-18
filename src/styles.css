@@ -129,7 +129,8 @@
   }
   
   .gradient-text-animated {
-    @apply gradient-text;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500;
+    background-size: 200% auto;
     animation: gradient-shift 3s ease infinite;
   }
 
@@ -155,7 +156,10 @@
   }
 
   .glass-card-hover {
-    @apply glass-card transition-colors duration-300;
+    @apply backdrop-blur-xl rounded-2xl transition-colors duration-300;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 10px 30px -10px rgba(0, 0, 0, 0.3);
     position: relative;
   }
 
@@ -582,7 +586,7 @@
   }
   
   .badge-glow {
-    @apply badge-premium;
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-white border border-gray-200 shadow-sm;
     animation: pulse-glow-light 2s ease-in-out infinite;
   }
 
