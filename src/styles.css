@@ -105,6 +105,10 @@
   .font-inter {
     font-family: 'Inter', sans-serif;
   }
+
+  #lovable-badge {
+    display: none !important;
+  }
 }
 
 @layer components {
