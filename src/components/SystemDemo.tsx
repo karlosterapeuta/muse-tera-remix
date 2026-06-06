@@ -3,9 +3,9 @@ import { ClipboardList, Search, Music, Activity, FileText, MessageCircle, Rocket
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const screenshots = [
-  { src: '/lovable-uploads/app-dashboard.png', label: 'Dashboard' },
-  { src: '/lovable-uploads/app-anamnese.png', label: 'Anamnese' },
-  { src: '/lovable-uploads/app-evolucao.png', label: 'Evolução' },
+  { src: '/musetera-uploads/app-dashboard.png', label: 'Dashboard' },
+  { src: '/musetera-uploads/app-anamnese.png', label: 'Anamnese' },
+  { src: '/musetera-uploads/app-evolucao.png', label: 'Evolução' },
 ];
 
 const SystemDemo = () => {

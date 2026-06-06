@@ -60,7 +60,7 @@ const Navigation = () => {
           <a href="#" className="flex items-center space-x-3 group">
             <div className="relative">
               <img 
-                src="/lovable-uploads/musetera-logo.jpeg" 
+                src="/musetera-uploads/musetera-logo.jpeg" 
                 alt="MuseTera Logo" 
                 className="h-11 w-11 rounded-full object-cover ring-2 ring-primary/30 group-hover:ring-primary transition-all duration-300 group-hover:scale-110"
               />

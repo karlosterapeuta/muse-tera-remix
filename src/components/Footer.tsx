@@ -32,7 +32,7 @@ const Footer = () => {
           {/* Brand section */}
           <div className="lg:col-span-1 space-y-6">
             <div className="flex items-center space-x-2">
-              <img src="/lovable-uploads/musetera-logo.jpeg" alt="MuseTera Logo" className="h-12 w-12 rounded-full object-cover ring-2 ring-blue-500/50" />
+              <img src="/musetera-uploads/musetera-logo.jpeg" alt="MuseTera Logo" className="h-12 w-12 rounded-full object-cover ring-2 ring-blue-500/50" />
               <span className="text-xl font-bold font-playfair bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">MuseTera</span>
             </div>
             <p className="text-white/60 leading-relaxed">
