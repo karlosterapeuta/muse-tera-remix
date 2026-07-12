@@ -61,7 +61,7 @@ const PromoBar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-gradient-to-r from-[#7a5510] via-[#d4a017] to-[#7a5510] text-black shadow-lg shadow-amber-900/30 overflow-hidden">
+    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-gradient-to-r from-[#1e40af] via-[#3b82f6] to-[#1e40af] text-black shadow-lg shadow-blue-900/30 overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)] animate-[shine_3s_linear_infinite]" style={{ backgroundSize: '200% 100%' }} />
       <div className="relative h-full container-padding flex items-center justify-center gap-2 sm:gap-4 text-[11px] sm:text-sm font-medium">
         <Flame className="h-4 w-4 text-black/70 animate-pulse flex-shrink-0" />
@@ -76,7 +76,7 @@ const PromoBar = () => {
         </div>
         <button
           onClick={scrollToPricing}
-          className="ml-1 sm:ml-2 bg-black text-amber-300 hover:bg-black/80 transition-colors font-bold rounded-full px-3 py-1 text-[11px] sm:text-xs shadow"
+          className="ml-1 sm:ml-2 bg-black text-blue-200 hover:bg-black/80 transition-colors font-bold rounded-full px-3 py-1 text-[11px] sm:text-xs shadow"
         >
           Garantir desconto
         </button>
