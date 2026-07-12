@@ -53,7 +53,7 @@ const SpaceBackground = () => {
       for (let i = 0; i < stars.length; i++) {
         const s = stars[i];
         const tw = Math.sin(t * s.tw + s.to) * 0.4 + 0.6;
-        ctx.fillStyle = `rgba(245,232,200,${s.a * tw})`;
+        ctx.fillStyle = `rgba(180,205,255,${s.a * tw})`;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fill();
@@ -70,7 +70,7 @@ const SpaceBackground = () => {
       const h = canvas.height / dpr;
       ctx.clearRect(0, 0, w, h);
       stars.forEach((s) => {
-        ctx.fillStyle = `rgba(245,232,200,${s.a})`;
+        ctx.fillStyle = `rgba(180,205,255,${s.a})`;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fill();
