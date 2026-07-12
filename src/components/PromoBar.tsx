@@ -61,7 +61,7 @@ const PromoBar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-gradient-to-r from-rose-600 via-orange-500 to-purple-600 text-white shadow-lg shadow-rose-900/30 overflow-hidden">
+    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-gradient-to-r from-[#7a5510] via-[#d4a017] to-[#7a5510] text-black shadow-lg shadow-amber-900/30 overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)] animate-[shine_3s_linear_infinite]" style={{ backgroundSize: '200% 100%' }} />
       <div className="relative h-full container-padding flex items-center justify-center gap-2 sm:gap-4 text-[11px] sm:text-sm font-medium">
         <Flame className="h-4 w-4 text-yellow-200 animate-pulse flex-shrink-0" />
