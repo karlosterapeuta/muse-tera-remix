@@ -61,22 +61,22 @@ const PromoBar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-gradient-to-r from-rose-600 via-orange-500 to-purple-600 text-white shadow-lg shadow-rose-900/30 overflow-hidden">
+    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-gradient-to-r from-[#7a5510] via-[#d4a017] to-[#7a5510] text-black shadow-lg shadow-amber-900/30 overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)] animate-[shine_3s_linear_infinite]" style={{ backgroundSize: '200% 100%' }} />
       <div className="relative h-full container-padding flex items-center justify-center gap-2 sm:gap-4 text-[11px] sm:text-sm font-medium">
-        <Flame className="h-4 w-4 text-yellow-200 animate-pulse flex-shrink-0" />
+        <Flame className="h-4 w-4 text-black/70 animate-pulse flex-shrink-0" />
         <span className="hidden sm:inline">Promoção de lançamento acaba em</span>
         <span className="sm:hidden">Acaba em</span>
         <div className="flex items-center gap-1 font-mono font-bold">
-          <span className="bg-black/30 rounded px-1.5 py-0.5 tabular-nums">{h}</span>
+          <span className="bg-black/20 rounded px-1.5 py-0.5 tabular-nums">{h}</span>
           <span>:</span>
-          <span className="bg-black/30 rounded px-1.5 py-0.5 tabular-nums">{m}</span>
+          <span className="bg-black/20 rounded px-1.5 py-0.5 tabular-nums">{m}</span>
           <span>:</span>
-          <span className="bg-black/30 rounded px-1.5 py-0.5 tabular-nums">{s}</span>
+          <span className="bg-black/20 rounded px-1.5 py-0.5 tabular-nums">{s}</span>
         </div>
         <button
           onClick={scrollToPricing}
-          className="ml-1 sm:ml-2 bg-white text-rose-600 hover:bg-yellow-100 transition-colors font-bold rounded-full px-3 py-1 text-[11px] sm:text-xs shadow"
+          className="ml-1 sm:ml-2 bg-black text-amber-300 hover:bg-black/80 transition-colors font-bold rounded-full px-3 py-1 text-[11px] sm:text-xs shadow"
         >
           Garantir desconto
         </button>

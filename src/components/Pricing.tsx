@@ -145,7 +145,7 @@ const Pricing = () => {
 
     return (
       <div className="relative overflow-hidden rounded-lg">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.06)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(212, 160, 23,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(212, 160, 23,0.06)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
         <div className="absolute -top-20 -left-20 w-64 h-64 bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative">

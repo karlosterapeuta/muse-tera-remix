@@ -12,7 +12,7 @@ const Footer = () => {
     <footer className="bg-gray-950 relative overflow-hidden">
       {/* Gradient divider */}
       <div className="h-px w-full" style={{
-        background: 'linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), rgba(168, 85, 247, 0.5), transparent)'
+        background: 'linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.5), rgba(230, 184, 69, 0.5), transparent)'
       }} />
       
       {/* Inspirational Quote Section */}
