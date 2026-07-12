@@ -52,7 +52,7 @@ const Navigation = () => {
       <div className={`absolute bottom-0 left-0 right-0 h-px transition-opacity duration-500 ${
         isScrolled ? 'opacity-100' : 'opacity-0'
       }`} style={{
-        background: 'linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3), transparent)'
+        background: 'linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.3), rgba(230, 184, 69, 0.3), transparent)'
       }} />
       <div className="container-padding">
         <div className="flex items-center justify-between h-14">
