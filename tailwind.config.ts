@@ -90,10 +90,10 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-				'therapy-gradient': 'linear-gradient(135deg, #e6b845 0%, #b8860b 100%)',
-				'healing-gradient': 'linear-gradient(135deg, #f4e0a0 0%, #d4a017 100%)',
-				'ocean-gradient': 'linear-gradient(135deg, #e6b845 0%, #b8860b 100%)',
-				'mesh-gradient': 'radial-gradient(at 40% 20%, hsla(42, 74%, 52%, 0.15) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(45, 85%, 62%, 0.15) 0px, transparent 50%), radial-gradient(at 0% 50%, hsla(38, 70%, 48%, 0.1) 0px, transparent 50%)',
+				'therapy-gradient': 'linear-gradient(135deg, #60a5fa 0%, #1d4ed8 100%)',
+				'healing-gradient': 'linear-gradient(135deg, #bfdbfe 0%, #2563eb 100%)',
+				'ocean-gradient': 'linear-gradient(135deg, #60a5fa 0%, #1d4ed8 100%)',
+				'mesh-gradient': 'radial-gradient(at 40% 20%, hsla(217, 91%, 60%, 0.15) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(213, 94%, 68%, 0.15) 0px, transparent 50%), radial-gradient(at 0% 50%, hsla(224, 76%, 48%, 0.1) 0px, transparent 50%)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
