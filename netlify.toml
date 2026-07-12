@@ -1,2 +1,23 @@
 [build]
   command = "npm run build"
+
+# TanStack Start runs through Netlify SSR. These redirects keep the custom
+# domain canonical and prevent Netlify from serving a stale/404 fallback when
+# a direct route is opened or refreshed.
+[[redirects]]
+  from = "https://www.musetera.com.br/*"
+  to = "https://musetera.com.br/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.musetera.com.br/*"
+  to = "https://musetera.com.br/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://musetera.com.br/*"
+  to = "https://musetera.com.br/:splat"
+  status = 301
+  force = true
