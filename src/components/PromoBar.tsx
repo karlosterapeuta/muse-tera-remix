@@ -68,15 +68,15 @@ const PromoBar = () => {
         <span className="hidden sm:inline">Promoção de lançamento acaba em</span>
         <span className="sm:hidden">Acaba em</span>
         <div className="flex items-center gap-1 font-mono font-bold">
-          <span className="bg-black/30 rounded px-1.5 py-0.5 tabular-nums">{h}</span>
+          <span className="bg-black/20 rounded px-1.5 py-0.5 tabular-nums">{h}</span>
           <span>:</span>
-          <span className="bg-black/30 rounded px-1.5 py-0.5 tabular-nums">{m}</span>
+          <span className="bg-black/20 rounded px-1.5 py-0.5 tabular-nums">{m}</span>
           <span>:</span>
-          <span className="bg-black/30 rounded px-1.5 py-0.5 tabular-nums">{s}</span>
+          <span className="bg-black/20 rounded px-1.5 py-0.5 tabular-nums">{s}</span>
         </div>
         <button
           onClick={scrollToPricing}
-          className="ml-1 sm:ml-2 bg-white text-rose-600 hover:bg-yellow-100 transition-colors font-bold rounded-full px-3 py-1 text-[11px] sm:text-xs shadow"
+          className="ml-1 sm:ml-2 bg-black text-amber-300 hover:bg-black/80 transition-colors font-bold rounded-full px-3 py-1 text-[11px] sm:text-xs shadow"
         >
           Garantir desconto
         </button>
