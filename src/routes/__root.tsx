@@ -72,16 +72,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Musetera" },
-      { name: "description", content: "Muse Tera Remix clones websites, enabling content replication and deployment." },
+      { title: "Musetera — Sistema de Gestão para Terapeutas" },
+      { name: "description", content: "Musetera: a plataforma completa para terapeutas gerenciarem agendamentos, clientes e pagamentos em um só lugar." },
       { name: "author", content: "Musetera" },
-      { property: "og:title", content: "Musetera" },
-      { property: "og:description", content: "Muse Tera Remix clones websites, enabling content replication and deployment." },
+      { property: "og:title", content: "Musetera — Sistema de Gestão para Terapeutas" },
+      { property: "og:description", content: "Musetera: a plataforma completa para terapeutas gerenciarem agendamentos, clientes e pagamentos em um só lugar." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Musetera" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Musetera" },
-      { name: "twitter:title", content: "Musetera" },
-      { name: "twitter:description", content: "Muse Tera Remix clones websites, enabling content replication and deployment." },
+      { name: "twitter:title", content: "Musetera — Sistema de Gestão para Terapeutas" },
+      { name: "twitter:description", content: "Musetera: a plataforma completa para terapeutas gerenciarem agendamentos, clientes e pagamentos em um só lugar." },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -109,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
