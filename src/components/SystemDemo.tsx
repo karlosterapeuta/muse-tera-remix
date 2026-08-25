@@ -43,10 +43,10 @@ const SystemDemo = () => {
   return (
     <section
       id="recursos"
-      className="relative overflow-hidden py-20 md:py-28 bg-background"
+      className="relative isolate overflow-hidden border-y border-white/5 bg-background py-20 md:py-28"
       ref={sectionRef as React.RefObject<HTMLElement>}
     >
-      <div className="container-padding relative">
+      <div className="container-padding relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Content */}
           <div
@@ -165,7 +165,7 @@ const SystemDemo = () => {
         </div>
       </div>
 
-      <div className="absolute inset-0 mesh-gradient opacity-40 pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-30 mesh-gradient" />
     </section>
   );
 };

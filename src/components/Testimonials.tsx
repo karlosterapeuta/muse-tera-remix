@@ -38,7 +38,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="depoimentos" className="section-padding bg-background relative overflow-hidden">
+    <section id="depoimentos" className="section-padding relative overflow-hidden border-t border-white/5 bg-background">
       <div className="absolute inset-0 mesh-gradient pointer-events-none" />
       
       <div className="container-padding relative z-10">
@@ -59,8 +59,8 @@ const Testimonials = () => {
               className="group relative glass-card-premium hover-glow-enhanced p-8"
             >
               {/* Quote icon */}
-              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-primary/15">
-                <Quote className="h-4 w-4 text-white" />
+              <div className="absolute -left-4 -top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-amber-200 to-amber-500 shadow-lg shadow-amber-500/20">
+                <Quote className="h-4 w-4 text-slate-950" />
               </div>
 
               <div className="space-y-6">
@@ -71,7 +71,7 @@ const Testimonials = () => {
                       <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
                     ))}
                   </div>
-                  <div className="text-sm text-blue-600 font-medium">Verificado ✓</div>
+                  <div className="text-sm font-medium text-emerald-300">Verificado ✓</div>
                 </div>
 
                 {/* Content */}
@@ -80,14 +80,14 @@ const Testimonials = () => {
                 </p>
 
                 {/* Author */}
-                <div className="space-y-4 pt-4 border-t border-gray-200">
+                <div className="space-y-4 border-t border-white/10 pt-4">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold shadow-lg shadow-primary/15">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-sky-300 to-blue-600 font-semibold text-slate-950 shadow-lg shadow-blue-500/20">
                       {testimonial.avatar}
                     </div>
                     <div className="flex-1">
                       <div className="font-semibold text-foreground">{testimonial.name}</div>
-                      <div className="text-sm text-blue-600 font-medium">{testimonial.role}</div>
+                      <div className="text-sm font-medium text-sky-200">{testimonial.role}</div>
                     </div>
                   </div>
                   
@@ -101,8 +101,8 @@ const Testimonials = () => {
                       <MapPin className="h-3 w-3" />
                       <span>{testimonial.location}</span>
                     </div>
-                    <div className="text-purple-600 font-medium">{testimonial.specialty}</div>
-                    <div className="text-green-600 font-medium">{testimonial.patients}</div>
+                    <div className="font-medium text-amber-100">{testimonial.specialty}</div>
+                    <div className="font-medium text-emerald-300">{testimonial.patients}</div>
                   </div>
                 </div>
               </div>

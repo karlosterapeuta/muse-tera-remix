@@ -228,15 +228,15 @@ const Pricing = () => {
   };
 
   return (
-    <section id="precos" className="section-padding relative overflow-hidden section-alt">
+    <section id="precos" className="section-padding relative overflow-hidden section-alt border-t border-white/5">
       <div className="absolute inset-0 mesh-gradient" />
 
       <div className="container-padding relative z-10">
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold font-playfair text-foreground">
+        <div className="mb-16 space-y-4 text-center">
+          <h2 className="font-playfair text-3xl font-semibold tracking-tight text-foreground lg:text-5xl">
             Planos que <span className="gradient-text">crescem</span> com você
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
             Escolha o plano ideal para sua prática. Todos os planos incluem suporte completo.
           </p>
         </div>
@@ -251,8 +251,8 @@ const Pricing = () => {
                   <div className="pointer-events-none absolute -bottom-24 -left-24 w-48 h-48 bg-violet-500/10 blur-3xl rounded-full" />
 
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-5 py-2 rounded-full text-sm font-semibold flex items-center space-x-2 shadow-lg shadow-indigo-500/30 uppercase tracking-wider">
-                      <Star className="h-4 w-4 fill-white" />
+                    <div className="flex items-center space-x-2 rounded-full bg-gradient-to-r from-amber-200 to-amber-500 px-5 py-2 text-sm font-semibold uppercase tracking-wider text-slate-950 shadow-lg shadow-amber-500/25">
+                      <Star className="h-4 w-4 fill-slate-950" />
                       <span>Mais Popular</span>
                     </div>
                   </div>
@@ -299,7 +299,7 @@ const Pricing = () => {
                 </ul>
 
                 <Button
-                  className={`w-full py-3 text-lg font-semibold ${plan.popular ? 'bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-xl shadow-indigo-600/30' : 'border-2 border-border hover:border-primary text-foreground hover:text-primary bg-transparent'} transition-all duration-300`}
+                  className={`w-full rounded-xl py-3 text-lg font-semibold ${plan.popular ? 'bg-gradient-to-r from-amber-200 to-amber-500 text-slate-950 shadow-xl shadow-amber-500/20 hover:from-amber-100 hover:to-amber-400' : 'border-2 border-white/15 bg-white/[0.03] text-foreground hover:border-amber-200/60 hover:bg-amber-200/[0.06] hover:text-amber-100'} transition-all duration-300`}
                   onClick={() => {
                     setShowPixQRCode(null);
                     setActiveModal(plan.key);

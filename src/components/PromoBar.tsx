@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Flame, X } from 'lucide-react';
+import { ArrowRight, Clock3, X } from 'lucide-react';
 
 const START_KEY = 'musetera_promo_start';
 const CLOSED_KEY = 'musetera_promo_closed';
@@ -31,7 +31,7 @@ const setNavOffset = (px: number) => {
 };
 
 const PromoBar = () => {
-  const [remaining, setRemaining] = useState<number>(DURATION_MS);
+  const [remaining, setRemaining] = useState(DURATION_MS);
   const [closed, setClosed] = useState(false);
 
   useEffect(() => {
@@ -41,11 +41,11 @@ const PromoBar = () => {
       setNavOffset(0);
       return;
     }
-    setNavOffset(40);
+
+    setNavOffset(42);
     setRemaining(getRemaining());
-    const id = window.setInterval(() => {
-      setRemaining(getRemaining());
-    }, 1000);
+    const id = window.setInterval(() => setRemaining(getRemaining()), 1000);
+
     return () => {
       window.clearInterval(id);
       setNavOffset(0);
@@ -53,7 +53,6 @@ const PromoBar = () => {
   }, []);
 
   if (closed) return null;
-
   const { h, m, s } = format(remaining);
 
   const scrollToPricing = () => {
@@ -61,24 +60,25 @@ const PromoBar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-gradient-to-r from-[#1e40af] via-[#3b82f6] to-[#1e40af] text-black shadow-lg shadow-blue-900/30 overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)] animate-[shine_3s_linear_infinite]" style={{ backgroundSize: '200% 100%' }} />
-      <div className="relative h-full container-padding flex items-center justify-center gap-2 sm:gap-4 text-[11px] sm:text-sm font-medium">
-        <Flame className="h-4 w-4 text-black/70 animate-pulse flex-shrink-0" />
-        <span className="hidden sm:inline">Promoção de lançamento acaba em</span>
-        <span className="sm:hidden">Acaba em</span>
-        <div className="flex items-center gap-1 font-mono font-bold">
-          <span className="bg-black/20 rounded px-1.5 py-0.5 tabular-nums">{h}</span>
-          <span>:</span>
-          <span className="bg-black/20 rounded px-1.5 py-0.5 tabular-nums">{m}</span>
-          <span>:</span>
-          <span className="bg-black/20 rounded px-1.5 py-0.5 tabular-nums">{s}</span>
+    <div className="fixed left-0 right-0 top-0 z-[60] h-[42px] overflow-hidden border-b border-amber-200/10 bg-[#101a2b]/95 text-white backdrop-blur-xl">
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/[0.06] to-transparent" />
+      <div className="container-padding relative flex h-full items-center justify-center gap-2 text-[11px] sm:gap-3 sm:text-xs">
+        <Clock3 className="h-3.5 w-3.5 shrink-0 text-amber-200" />
+        <span className="hidden text-white/65 sm:inline">Condição especial de lançamento termina em</span>
+        <span className="text-white/65 sm:hidden">Termina em</span>
+        <div className="flex items-center gap-1 font-mono font-semibold tracking-wide text-amber-100">
+          <span className="rounded bg-white/[0.08] px-1.5 py-0.5 tabular-nums">{h}</span>
+          <span className="text-white/35">:</span>
+          <span className="rounded bg-white/[0.08] px-1.5 py-0.5 tabular-nums">{m}</span>
+          <span className="text-white/35">:</span>
+          <span className="rounded bg-white/[0.08] px-1.5 py-0.5 tabular-nums">{s}</span>
         </div>
         <button
           onClick={scrollToPricing}
-          className="ml-1 sm:ml-2 bg-black text-blue-200 hover:bg-black/80 transition-colors font-bold rounded-full px-3 py-1 text-[11px] sm:text-xs shadow"
+          className="group ml-1 inline-flex items-center gap-1.5 rounded-full bg-amber-200 px-3 py-1.5 font-semibold text-slate-950 transition-colors hover:bg-amber-100"
         >
-          Garantir desconto
+          Ver condição
+          <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
         </button>
         <button
           aria-label="Fechar aviso de promoção"
@@ -87,12 +87,11 @@ const PromoBar = () => {
             setNavOffset(0);
             setClosed(true);
           }}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 h-6 w-6 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+          className="absolute right-1 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-white/45 transition-colors hover:bg-white/10 hover:text-white sm:right-3"
         >
           <X className="h-3.5 w-3.5" />
         </button>
       </div>
-      <style>{`@keyframes shine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }`}</style>
     </div>
   );
 };
