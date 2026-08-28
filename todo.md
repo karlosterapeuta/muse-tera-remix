@@ -1,7 +1,6 @@
-# Clonagem fiel do preview
+# Mockup de celular
 
-- [ ] Inspecionar detalhadamente o preview público.
-- [ ] Mapear layout, estilos e assets da referência.
-- [ ] Implementar a clonagem no projeto.
-- [ ] Comparar desktop e mobile e ajustar diferenças.
-- [ ] Validar build e rotas antes da entrega.
+- [ ] Definir enquadramento e estilo do aparelho.
+- [ ] Gerar a captura dentro de um mockup de celular.
+- [ ] Integrar o resultado ao site.
+- [ ] Validar a apresentação em desktop e mobile.
