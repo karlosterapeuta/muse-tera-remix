@@ -1,5 +1,5 @@
-# Integração da logo
+# Correção da logo
 
-- [ ] Preparar a logo fornecida para uso sobre o fundo do site.
-- [ ] Aplicar a logo no header, hero, mockup, footer e favicon.
-- [ ] Validar contraste, proporção e responsividade.
+- [ ] Diagnosticar o deslocamento do emblema dentro do círculo.
+- [ ] Ajustar recorte, escala e posição da logo.
+- [ ] Validar header, hero e mobile.

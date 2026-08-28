@@ -42,3 +42,11 @@
 
 /* Recorte circular da marca no hero: impede que o fundo quadriculado da imagem apareça fora do emblema. */
 .hero-wordmark img { border-radius: 50%; }
+
+/* Correção de alinhamento: o emblema é recortado dentro do círculo, sem deslocar a arte ou deixar folgas assimétricas. */
+.muse-brand__mark { position: relative; padding: 0; overflow: hidden; }
+.muse-brand__mark img { width: 112%; height: 112%; max-width: none; object-fit: cover; object-position: 50% 50%; transform: translate(-5.35%, -5.35%); border-radius: 50%; }
+.hero-wordmark { align-items: center; }
+.hero-wordmark img { flex: 0 0 auto; width: 50px; height: 50px; object-fit: cover; object-position: 50% 50%; transform: scale(1.06); transform-origin: center; border-radius: 50%; }
+.muse-footer .muse-brand__mark img { width: 112%; height: 112%; transform: translate(-5.35%, -5.35%); }
+@media (max-width: 560px) { .hero-wordmark img { width: 44px; height: 44px; transform: scale(1.04); } }
