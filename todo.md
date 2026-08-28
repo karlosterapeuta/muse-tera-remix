@@ -1,6 +1,7 @@
-# Réplica do preview
+# Clonagem fiel do preview
 
-- [ ] Inspecionar o preview fornecido e o estado atual.
-- [ ] Mapear a estrutura visual e a linguagem da referência.
-- [ ] Implementar a réplica no projeto.
-- [ ] Validar responsividade e funcionamento.
+- [ ] Inspecionar detalhadamente o preview público.
+- [ ] Mapear layout, estilos e assets da referência.
+- [ ] Implementar a clonagem no projeto.
+- [ ] Comparar desktop e mobile e ajustar diferenças.
+- [ ] Validar build e rotas antes da entrega.

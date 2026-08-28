@@ -26,3 +26,13 @@ Manter o modelo de referência como ground truth: navegação e hierarquia de Sa
 ## Conteúdo sensível
 
 Não inventar depoimentos, avaliações ou métricas de clientes. Caso o projeto não tenha conteúdo fornecido pelo usuário para depoimentos e números, usar estados claramente marcados como conteúdo a substituir ou remover a seção de prova social. Não afirmar conformidades, certificações ou resultados clínicos sem fonte/validação do usuário.
+
+## Confirmação visual adicional
+
+A captura desktop confirma que a referência usa uma barra de lançamento dourada no topo, header sobre hero marinho, logo compacto com ícone M, navegação Sobre / Recursos / Depoimentos / Preços e botão outlined Acessar sistema. O hero usa título serifado grande branco e dourado à esquerda, dashboard azul escuro inclinado à direita e botão flutuante de WhatsApp no canto inferior direito. Após a primeira rolagem, a transição leva a selos arredondados de confiança e à seção Sobre em fundo azul-marinho, com tipografia serifada centralizada e conteúdo de história abaixo.
+
+O clone atual precisa ser ajustado para usar exatamente os rótulos da navegação do preview, incluir a seção de Depoimentos como parte da estrutura principal e reproduzir os três planos com os preços e textos do modelo. O dashboard deve mostrar dados de exemplo visualmente idênticos ao preview, sem transformar esses números em alegações reais fora do protótipo.
+
+## Seção central confirmada
+
+A referência mantém o fundo marinho profundo nas áreas Sobre e sistema. A seção Sobre inclui selos de confiança no topo, título centralizado, história em três marcos e uma caixa ampla de missão com superfície azul translúcida, cantos arredondados e texto em itálico. A transição para o sistema ao vivo é visualmente escura, com título e mockups de produto em cards, não uma faixa clara de apresentação.
