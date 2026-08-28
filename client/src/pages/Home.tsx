@@ -16,10 +16,9 @@ const navItems = [
   { label: "Preços", id: "precos" },
 ];
 
-const PROMO_START_KEY = "musetera_promo_start";
 const PROMO_CLOSED_KEY = "musetera_promo_closed";
-const PROMO_DURATION_MS = 24 * 60 * 60 * 1000;
-const getPromoRemaining = () => { if (typeof window === "undefined") return PROMO_DURATION_MS; let start = Number(localStorage.getItem(PROMO_START_KEY)); const now = Date.now(); if (!start || now - start >= PROMO_DURATION_MS) { start = now; localStorage.setItem(PROMO_START_KEY, String(start)); } return Math.max(0, PROMO_DURATION_MS - (now - start)); };
+const PROMO_END_AT = new Date("2026-12-01T23:59:59-03:00").getTime();
+const getPromoRemaining = () => Math.max(0, PROMO_END_AT - Date.now());
 const formatPromoTime = (ms: number) => { const total = Math.floor(ms / 1000); return { h: String(Math.floor(total / 3600)).padStart(2, "0"), m: String(Math.floor((total % 3600) / 60)).padStart(2, "0"), s: String(total % 60).padStart(2, "0") }; };
 
 const testimonials = [
@@ -48,7 +47,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFeature, setActiveFeature] = useState("dashboard");
   const [promoClosed, setPromoClosed] = useState(false);
-  const [promoRemaining, setPromoRemaining] = useState(PROMO_DURATION_MS);
+  const [promoRemaining, setPromoRemaining] = useState(getPromoRemaining());
   useEffect(() => { if (typeof window === "undefined") return; if (sessionStorage.getItem(PROMO_CLOSED_KEY) === "1") { setPromoClosed(true); document.documentElement.style.setProperty("--promo-h", "0px"); return; } document.documentElement.style.setProperty("--promo-h", "42px"); setPromoRemaining(getPromoRemaining()); const timer = window.setInterval(() => setPromoRemaining(getPromoRemaining()), 1000); return () => { window.clearInterval(timer); document.documentElement.style.setProperty("--promo-h", "0px"); }; }, []);
   const { h, m, s } = formatPromoTime(promoRemaining);
   const featureSrc = activeFeature === "anamnese" ? anamneseAsset : activeFeature === "evolucao" ? evolucaoAsset : dashboardAsset;

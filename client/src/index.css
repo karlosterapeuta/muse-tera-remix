@@ -72,3 +72,19 @@
 .promo-close { position: absolute; top: 50%; right: 0; display: grid; place-items: center; width: 28px; height: 28px; border: 0; border-radius: 999px; background: transparent; color: rgba(255,255,255,.45); transform: translateY(-50%); }
 .promo-close:hover { background: rgba(255,255,255,.1); color: white; }
 @media (max-width: 560px) { .promo-bar__inner { justify-content: flex-start; gap: 8px; width: calc(100% - 36px); padding-right: 30px; font-size: 8px; }.promo-bar__copy { display: none; }.promo-bar__copy--mobile { display: inline; }.promo-countdown { gap: 2px; font-size: 8px; }.promo-countdown b { min-width: 21px; padding: 3px 4px; }.promo-bar__inner > button:not(.promo-close) { margin-left: 0; padding: 5px 8px; font-size: 8px; }.promo-close { right: -2px; } }
+
+/* Countdown global: destaque visual reforçado sem alterar a altura da faixa de referência. */
+.promo-countdown { gap: 5px; font-size: 14px; font-weight: 800; letter-spacing: .08em; text-shadow: 0 1px 10px rgba(237,191,104,.2); }
+.promo-countdown b { min-width: 34px; padding: 5px 8px; border: 1px solid rgba(237,191,104,.3); border-radius: 6px; background: rgba(255,255,255,.14); color: #fff5d7; font-size: 14px; line-height: 1; box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 3px 10px rgba(0,0,0,.12); }
+.promo-countdown i { color: rgba(255,255,255,.7); font-size: 14px; }
+@media (max-width: 560px) { .promo-countdown { gap: 2px; font-size: 10px; }.promo-countdown b { min-width: 24px; padding: 5px 4px; font-size: 10px; }.promo-countdown i { font-size: 10px; } }
+
+/* Mobile PromoBar: a regra específica vence o estilo legado de .promo-bar span e evita o corte do contador. */
+@media (max-width: 560px) {
+  .promo-bar span.promo-bar__copy { display: none; }
+  .promo-bar span.promo-bar__copy--mobile { display: inline-flex; flex: 0 0 auto; }
+  .promo-bar__inner { gap: 5px; padding-right: 32px; }
+  .promo-countdown { flex: 0 0 auto; }
+  .promo-countdown b { min-width: 28px; padding-inline: 3px; }
+  .promo-bar__inner > button:not(.promo-close) { flex: 0 0 auto; white-space: nowrap; }
+}
