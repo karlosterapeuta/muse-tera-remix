@@ -1,4 +1,4 @@
-/* STYLE SYSTEM: tema Infraestrutura Editorial — fundo ink, âmbar Sinal, teal de status, tipografia Space Grotesk + IBM Plex Sans. */
+/* STYLE SYSTEM: réplica do preview MuseTera — SaaS acolhedor para musicoterapeutas, interface azul-marinho e tipografia editorial. */
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
@@ -20,7 +20,7 @@ function Router() {
 export default function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark">
+      <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
           <Router />
