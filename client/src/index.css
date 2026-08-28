@@ -56,3 +56,19 @@
 .muse-brand__mark img, .muse-footer .muse-brand__mark img { display: block; width: 100%; height: 100%; max-width: none; object-fit: contain; object-position: center; transform: none; border-radius: 50%; }
 .hero-wordmark img { display: block; flex: 0 0 auto; width: 50px; height: 50px; object-fit: contain; object-position: center; transform: none; border-radius: 50%; }
 @media (max-width: 560px) { .hero-wordmark img { width: 44px; height: 44px; transform: none; } }
+
+/* PromoBar clonada do repositório de referência: faixa fixa, contador separado e CTA alinhado. */
+.promo-bar { position: fixed; inset: 0 0 auto; z-index: 60; height: 42px; overflow: hidden; border-bottom: 1px solid rgba(237,191,104,.12); background: rgba(16,26,43,.95); color: white; backdrop-filter: blur(18px); }
+.promo-bar::before { position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(237,191,104,.06), transparent); content: ""; pointer-events: none; }
+.promo-bar__inner { position: relative; display: flex; align-items: center; justify-content: center; gap: 12px; width: min(calc(100% - 36px), 1180px); height: 100%; margin-inline: auto; font-size: 11px; }
+.promo-bar__inner > svg { flex: 0 0 auto; color: var(--gold); }
+.promo-bar__copy { color: rgba(255,255,255,.65); white-space: nowrap; }
+.promo-bar__copy--mobile { display: none; }
+.promo-countdown { display: inline-flex; align-items: center; gap: 4px; color: #fff0c7; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 700; letter-spacing: .06em; }
+.promo-countdown b { min-width: 25px; padding: 3px 6px; border-radius: 4px; background: rgba(255,255,255,.08); text-align: center; font-variant-numeric: tabular-nums; }
+.promo-countdown i { color: rgba(255,255,255,.35); font-style: normal; }
+.promo-bar__inner > button:not(.promo-close) { display: inline-flex; align-items: center; gap: 6px; margin-left: 4px; padding: 6px 12px; border: 0; border-radius: 999px; background: var(--gold); color: #071426; font-size: 10px; font-weight: 800; transition: background 180ms ease, transform 180ms ease; }
+.promo-bar__inner > button:not(.promo-close):hover { background: #f4d898; transform: translateY(-1px); }
+.promo-close { position: absolute; top: 50%; right: 0; display: grid; place-items: center; width: 28px; height: 28px; border: 0; border-radius: 999px; background: transparent; color: rgba(255,255,255,.45); transform: translateY(-50%); }
+.promo-close:hover { background: rgba(255,255,255,.1); color: white; }
+@media (max-width: 560px) { .promo-bar__inner { justify-content: flex-start; gap: 8px; width: calc(100% - 36px); padding-right: 30px; font-size: 8px; }.promo-bar__copy { display: none; }.promo-bar__copy--mobile { display: inline; }.promo-countdown { gap: 2px; font-size: 8px; }.promo-countdown b { min-width: 21px; padding: 3px 4px; }.promo-bar__inner > button:not(.promo-close) { margin-left: 0; padding: 5px 8px; font-size: 8px; }.promo-close { right: -2px; } }

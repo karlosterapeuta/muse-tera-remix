@@ -1,5 +1,5 @@
-# Correção definitiva da logo
+# Barra promocional
 
-- [ ] Inspecionar o asset e a estrutura atual da marca.
-- [ ] Separar o emblema do wordmark e centralizar o círculo.
-- [ ] Validar desktop, mobile e build.
+- [ ] Auditar a PromoBar original no Git.
+- [ ] Clonar texto, contador e layout responsivo.
+- [ ] Validar em desktop e mobile.
