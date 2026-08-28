@@ -1,6 +1,4 @@
-# Mockup de celular
+# Atualização de preços
 
-- [ ] Definir enquadramento e estilo do aparelho.
-- [ ] Gerar a captura dentro de um mockup de celular.
-- [ ] Integrar o resultado ao site.
-- [ ] Validar a apresentação em desktop e mobile.
+- [ ] Atualizar os valores de 30 dias, 6 meses e 12 meses.
+- [ ] Validar a seção de preços e o build.

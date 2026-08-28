@@ -22,9 +22,9 @@ const testimonials = [
 ];
 
 const plans = [
-  { name: "Sem Fidelidade", detail: "30 dias", description: "Flexibilidade máxima para seu negócio", price: "R$ 34,90", suffix: "/mês", features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
-  { name: "Fidelidade 6 Meses", detail: "economia semestral", description: "Economia com compromisso semestral", price: "R$ 199,00", suffix: "/6 meses", popular: true, features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
-  { name: "Fidelidade 12 Meses", detail: "melhor custo-benefício", description: "Melhor custo-benefício para sua prática", price: "R$ 299,00", suffix: "/12 meses", features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
+  { name: "Sem Fidelidade", detail: "30 dias", description: "Flexibilidade máxima para seu negócio", price: "R$ 69,90", suffix: "/mês", features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
+  { name: "Fidelidade 6 Meses", detail: "economia semestral", description: "Economia com compromisso semestral", price: "R$ 399,00", suffix: "/6 meses", popular: true, features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
+  { name: "Fidelidade 12 Meses", detail: "melhor custo-benefício", description: "Melhor custo-benefício para sua prática", price: "R$ 699,00", suffix: "/12 meses", features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
 ];
 
 const flow = ["Anamnese", "Avaliação", "Plano Musicoterapia", "Intervenção", "Relatório"];
