@@ -1,4 +1,6 @@
-# Atualização de preços
+# Clone do repositório de referência
 
-- [ ] Atualizar os valores de 30 dias, 6 meses e 12 meses.
-- [ ] Validar a seção de preços e o build.
+- [ ] Clonar e auditar o repositório GitHub.
+- [ ] Identificar o vídeo do hero e os assets públicos.
+- [ ] Adaptar a implementação para o MuseTera.
+- [ ] Validar visual, responsividade e vídeo.
