@@ -43,6 +43,42 @@ function DashboardMockup() {
 
 function ProductScreenshot({ src, alt, phone = false }: { src: string; alt: string; phone?: boolean }) { return <div className={`product-screenshot ${phone ? "product-screenshot--phone" : ""}`}><img src={src} alt={alt} onError={(event) => { event.currentTarget.style.display = "none"; }} /><div className="product-screenshot__fallback"><BarChart3 size={22} /><span>prévia do sistema MuseTera</span></div></div>; }
 
+const activityNotices = [
+  { title: "Condição especial ativa", detail: "Disponível até 01/12/2026", icon: Sparkles },
+  { title: "7 dias para testar", detail: "Conheça o sistema sem compromisso", icon: Clock3 },
+  { title: "Dados protegidos", detail: "Privacidade e LGPD em foco", icon: ShieldCheck },
+  { title: "Tudo em um só lugar", detail: "Pacientes, sessões e evolução", icon: ClipboardList },
+];
+function ActivityNotifications() {
+  const [index, setIndex] = useState(-1);
+  const [visible, setVisible] = useState(false);
+  const [closed, setClosed] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (sessionStorage.getItem("musetera_activity_closed") === "1") { setClosed(true); return; }
+    let hideTimer: number | undefined;
+    let nextTimer: number | undefined;
+    let cursor = 0;
+    const showNext = () => {
+      setIndex(cursor % activityNotices.length);
+      setVisible(true);
+      hideTimer = window.setTimeout(() => {
+        setVisible(false);
+        nextTimer = window.setTimeout(() => { cursor += 1; showNext(); }, 12000);
+      }, 5000);
+    };
+    nextTimer = window.setTimeout(showNext, 6000);
+    return () => { if (hideTimer) window.clearTimeout(hideTimer); if (nextTimer) window.clearTimeout(nextTimer); };
+  }, []);
+  if (closed || index < 0) return null;
+  const notice = activityNotices[index];
+  const Icon = notice.icon;
+  return <div role="status" aria-live="polite" className={`activity-notification ${visible ? "is-visible" : ""}`}>
+    <div className="activity-notification__icon"><Icon size={18} /></div>
+    <div className="activity-notification__copy"><strong>{notice.title}</strong><span>{notice.detail}</span><small>informação do MuseTera</small></div>
+    <button aria-label="Fechar notificações" onClick={() => { sessionStorage.setItem("musetera_activity_closed", "1"); setClosed(true); }}><X size={13} /></button>
+  </div>;
+}
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFeature, setActiveFeature] = useState("dashboard");
@@ -72,6 +108,6 @@ export default function Home() {
       <section className="contact-section" id="contato"><div className="muse-container contact-inner"><div><span className="section-kicker">Pronto para começar?</span><h2>Mais tempo para cuidar.<br /><em>Fale com a equipe.</em></h2><p>Descubra como o MuseTera pode simplificar sua rotina e acompanhar o crescimento da sua prática.</p></div><div className="contact-card"><MessageCircle size={20} /><h3>Vamos conversar</h3><p>Estamos aqui para ajudar você a encontrar o plano ideal.</p><a href="mailto:portal.musetera@gmail.com">portal.musetera@gmail.com <ArrowRight size={14} /></a><a href="https://wa.me/5581986953506" target="_blank" rel="noreferrer"><MessageCircle size={14} /> WhatsApp</a></div></div></section>
     </main>
 
-    <footer className="muse-footer"><div className="muse-container muse-footer__grid"><a href="#home" className="muse-brand"><span className="muse-brand__mark"><img src={brandMark} alt="" /></span><span><strong>MuseTera</strong><small>GESTÃO PARA MUSICOTERAPEUTAS</small></span></a><p>Tecnologia simples e especializada para que musicoterapeutas organizem sua prática e estejam mais presentes no cuidado.</p><div className="footer-links"><a href="#recursos">Recursos</a><a href="#precos">Preços</a><a href="#sobre">Sobre o MuseTera</a><a href="#contato">Falar com a equipe</a><a href="mailto:portal.musetera@gmail.com">E-mail</a><a href="https://www.instagram.com/sistema_musetera/" target="_blank" rel="noreferrer">Instagram</a></div></div><div className="muse-container muse-footer__bottom"><span>© 2026 MuseTera</span><span>Privacidade · Termos de uso · LGPD</span><a href="#home">voltar ao topo <ArrowRight size={13} /></a></div></footer><a className="floating-whatsapp" href="https://wa.me/5581986953506" target="_blank" rel="noreferrer" aria-label="Fale conosco no WhatsApp"><MessageCircle size={22} /></a>
+    <footer className="muse-footer"><div className="muse-container muse-footer__grid"><a href="#home" className="muse-brand"><span className="muse-brand__mark"><img src={brandMark} alt="" /></span><span><strong>MuseTera</strong><small>GESTÃO PARA MUSICOTERAPEUTAS</small></span></a><p>Tecnologia simples e especializada para que musicoterapeutas organizem sua prática e estejam mais presentes no cuidado.</p><div className="footer-links"><a href="#recursos">Recursos</a><a href="#precos">Preços</a><a href="#sobre">Sobre o MuseTera</a><a href="#contato">Falar com a equipe</a><a href="mailto:portal.musetera@gmail.com">E-mail</a><a href="https://www.instagram.com/sistema_musetera/" target="_blank" rel="noreferrer">Instagram</a></div></div><div className="muse-container muse-footer__bottom"><span>© 2026 MuseTera</span><span>Privacidade · Termos de uso · LGPD</span><a href="#home">voltar ao topo <ArrowRight size={13} /></a></div></footer><ActivityNotifications /><a className="floating-whatsapp" href="https://wa.me/5581986953506" target="_blank" rel="noreferrer" aria-label="Fale conosco no WhatsApp"><MessageCircle size={22} /></a>
   </div>;
 }

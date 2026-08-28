@@ -88,3 +88,17 @@
   .promo-countdown b { min-width: 28px; padding-inline: 3px; }
   .promo-bar__inner > button:not(.promo-close) { flex: 0 0 auto; white-space: nowrap; }
 }
+
+/* Notificações de atividade do MuseTera: mesmo tratamento flutuante do Git, sem prova social inventada. */
+.activity-notification { position: fixed; left: 14px; bottom: 82px; z-index: 45; display: flex; align-items: center; gap: 11px; width: min(calc(100% - 28px), 315px); padding: 12px 34px 12px 12px; border: 1px solid rgba(237,191,104,.2); border-radius: 14px; background: rgba(16,31,52,.96); box-shadow: 0 18px 45px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.06); backdrop-filter: blur(18px); opacity: 0; transform: translateX(-24px); pointer-events: none; transition: opacity 500ms ease, transform 500ms cubic-bezier(.23,1,.32,1); }
+.activity-notification.is-visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.activity-notification__icon { display: grid; flex: 0 0 auto; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(119,199,187,.25); border-radius: 50%; background: rgba(119,199,187,.12); color: var(--teal); }
+.activity-notification__copy { min-width: 0; }
+.activity-notification__copy strong, .activity-notification__copy span, .activity-notification__copy small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.activity-notification__copy strong { color: var(--cream); font-size: 12px; line-height: 1.2; }
+.activity-notification__copy span { margin-top: 3px; color: rgba(255,255,255,.7); font-size: 10px; line-height: 1.2; }
+.activity-notification__copy small { margin-top: 5px; color: var(--teal); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 8px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.activity-notification > button { position: absolute; top: 7px; right: 7px; display: grid; place-items: center; width: 20px; height: 20px; border: 0; border-radius: 50%; background: transparent; color: rgba(255,255,255,.42); }
+.activity-notification > button:hover { background: rgba(255,255,255,.1); color: white; }
+@media (max-width: 560px) { .activity-notification { left: 14px; bottom: 76px; width: min(calc(100% - 28px), 300px); } }
+@media (prefers-reduced-motion: reduce) { .activity-notification { transition: none; } }
