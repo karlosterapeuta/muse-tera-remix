@@ -1,6 +1,5 @@
-# Clone do repositório de referência
+# Integração da logo
 
-- [ ] Clonar e auditar o repositório GitHub.
-- [ ] Identificar o vídeo do hero e os assets públicos.
-- [ ] Adaptar a implementação para o MuseTera.
-- [ ] Validar visual, responsividade e vídeo.
+- [ ] Preparar a logo fornecida para uso sobre o fundo do site.
+- [ ] Aplicar a logo no header, hero, mockup, footer e favicon.
+- [ ] Validar contraste, proporção e responsividade.
