@@ -1,5 +1,5 @@
-# Correção da logo
+# Correção definitiva da logo
 
-- [ ] Diagnosticar o deslocamento do emblema dentro do círculo.
-- [ ] Ajustar recorte, escala e posição da logo.
-- [ ] Validar header, hero e mobile.
+- [ ] Inspecionar o asset e a estrutura atual da marca.
+- [ ] Separar o emblema do wordmark e centralizar o círculo.
+- [ ] Validar desktop, mobile e build.

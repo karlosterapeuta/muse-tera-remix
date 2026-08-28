@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, BarChart3, CalendarDays, Check, ChevronDown, ClipboardList, Clock3, FileText, HeartHandshake, Menu, MessageCircle, Music2, Play, ShieldCheck, Sparkles, UsersRound, X } from "lucide-react";
 
-const brandMark = "/manus-storage/musetera-logo-transparent_b810f453.png";
+const brandMark = "/manus-storage/musetera-logo-circular_1932db1d.png";
 const heroImage = "/manus-storage/musetera-musicoterapia-hero_c947579a.jpg";
 const dashboardAsset = "/manus-storage/musetera-dashboard-celular_e12da4c6.png";
 const heroVideo = "/manus-storage/musetera-hero-video_c5363dfd.mp4";
