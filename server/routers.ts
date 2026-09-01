@@ -21,7 +21,15 @@ const planSchema = z.object({ plan: z.enum(["30-days", "6-months", "12-months"])
 const DEFAULT_MERCADO_PAGO_RETURN_ORIGIN = "https://museterasite.netlify.app";
 
 function getMercadoPagoReturnOrigin(req: { protocol: string; get(name: string): string | undefined }) {
-  if (ENV.isProduction) return DEFAULT_MERCADO_PAGO_RETURN_ORIGIN;
+  if (ENV.isProduction) {
+    try {
+      const configuredUrl = new URL(ENV.mercadoPagoReturnUrl || DEFAULT_MERCADO_PAGO_RETURN_ORIGIN);
+      if (configuredUrl.protocol === "https:") return configuredUrl.origin;
+    } catch {
+      // Fall through to the canonical public HTTPS origin.
+    }
+    return DEFAULT_MERCADO_PAGO_RETURN_ORIGIN;
+  }
 
   const forwardedProto = req.get("x-forwarded-proto")?.split(",")[0]?.trim();
   const forwardedHost = req.get("x-forwarded-host")?.split(",")[0]?.trim();

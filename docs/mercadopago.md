@@ -18,7 +18,7 @@ O processamento de notificações está **externalizado** conforme solicitado, u
 
 `https://bot-musetera.lovable.app/api/public/mp-webhook`
 
-O Mercado Pago envia os eventos para esse endpoint. A aplicação MuseTera configura essa URL na preferência criada, mas não duplica o processamento localmente. A validação de `x-signature`, persistência de pagamento e atualização de status devem permanecer implementadas no serviço externo. A página de retorno (`success`, `pending` e `failure`) é apenas uma etapa de navegação e não deve ser usada como confirmação de pagamento; a confirmação deve vir do webhook.
+O Mercado Pago envia os eventos para esse endpoint. A aplicação MuseTera configura essa URL na preferência criada, mas não duplica o processamento localmente. A validação de `x-signature`, persistência de pagamento e atualização de status devem permanecer implementadas no serviço externo. A página de retorno (`success`, `pending` e `failure`) é apenas uma etapa de navegação e não deve ser usada como confirmação de pagamento; a confirmação deve vir do webhook. O backend sempre envia as três URLs em HTTPS e usa `https://museterasite.netlify.app` como fallback público. Se o domínio oficial mudar, defina `MERCADOPAGO_RETURN_URL` no ambiente do backend com a origem HTTPS correspondente.
 
 ## Segurança e produção
 
