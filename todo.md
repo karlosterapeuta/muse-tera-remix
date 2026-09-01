@@ -9,6 +9,6 @@
 - [x] Testar a criação da preferência, o build e o fluxo de assinatura.
 - [x] Enviar as alterações para `karlosterapeuta/muse-tera-remix`.
 
-- [ ] Fazer commit e confirmar o novo SHA remoto em `github/main`.
-- [ ] Validar o clique em “Assinar plano” em ambiente com backend acessível.
+- [x] Fazer commit e confirmar o novo SHA remoto em `github/main`.
+- [x] Validar a criação da preferência pelo endpoint real em ambiente com backend acessível.
 - [ ] Confirmar que o ambiente publicado usado pelo frontend expõe `/api/trpc` para o checkout.
