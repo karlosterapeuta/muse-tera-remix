@@ -2,6 +2,13 @@
   command = "pnpm build"
   publish = "dist/public"
 
+# Keep the static Netlify frontend connected to the fullstack tRPC backend.
+[[redirects]]
+  from = "/api/trpc/*"
+  to = "https://musetera-ybjdwyyk.manus.space/api/trpc/:splat"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
