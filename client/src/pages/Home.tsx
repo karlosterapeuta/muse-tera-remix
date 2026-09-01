@@ -1,6 +1,8 @@
 /* STYLE SYSTEM: clone fiel do preview público MuseTera — SaaS para musicoterapeutas, marinho profundo, serif display, dashboard, confiança, recursos, depoimentos e preços. */
 import { useEffect, useState } from "react";
 import { ArrowRight, BarChart3, CalendarDays, Check, ChevronDown, ClipboardList, Clock3, FileText, HeartHandshake, Menu, MessageCircle, Music2, Play, ShieldCheck, Sparkles, UsersRound, X } from "lucide-react";
+import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
 
 const brandMark = "/manus-storage/musetera-logo-circular_1932db1d.png";
 const heroImage = "/manus-storage/musetera-musicoterapia-hero_c947579a.jpg";
@@ -28,9 +30,9 @@ const testimonials = [
 ];
 
 const plans = [
-  { name: "Sem Fidelidade", detail: "30 dias", description: "Flexibilidade máxima para seu negócio", price: "R$ 69,90", suffix: "/mês", features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
-  { name: "Fidelidade 6 Meses", detail: "economia semestral", description: "Economia com compromisso semestral", price: "R$ 399,00", suffix: "/6 meses", popular: true, features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
-  { name: "Fidelidade 12 Meses", detail: "melhor custo-benefício", description: "Melhor custo-benefício para sua prática", price: "R$ 699,00", suffix: "/12 meses", features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
+  { id: "30-days" as const, name: "Sem Fidelidade", detail: "30 dias", description: "Flexibilidade máxima para seu negócio", price: "R$ 69,90", suffix: "/mês", features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
+  { id: "6-months" as const, name: "Fidelidade 6 Meses", detail: "economia semestral", description: "Economia com compromisso semestral", price: "R$ 399,00", suffix: "/6 meses", popular: true, features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
+  { id: "12-months" as const, name: "Fidelidade 12 Meses", detail: "melhor custo-benefício", description: "Melhor custo-benefício para sua prática", price: "R$ 699,00", suffix: "/12 meses", features: ["Pacientes ilimitados", "Agendamento avançado", "Relatórios detalhados", "Planos de tratamento", "Suporte prioritário", "50GB de armazenamento"] },
 ];
 
 const flow = ["Anamnese", "Avaliação", "Plano Musicoterapia", "Intervenção", "Relatório"];
@@ -87,6 +89,15 @@ export default function Home() {
   useEffect(() => { if (typeof window === "undefined") return; if (sessionStorage.getItem(PROMO_CLOSED_KEY) === "1") { setPromoClosed(true); document.documentElement.style.setProperty("--promo-h", "0px"); return; } document.documentElement.style.setProperty("--promo-h", "42px"); setPromoRemaining(getPromoRemaining()); const timer = window.setInterval(() => setPromoRemaining(getPromoRemaining()), 1000); return () => { window.clearInterval(timer); document.documentElement.style.setProperty("--promo-h", "0px"); }; }, []);
   const { h, m, s } = formatPromoTime(promoRemaining);
   const featureSrc = activeFeature === "anamnese" ? anamneseAsset : activeFeature === "evolucao" ? evolucaoAsset : dashboardAsset;
+  const createPreference = trpc.payments.createPreference.useMutation();
+  const handleCheckout = async (plan: (typeof plans)[number]) => {
+    try {
+      const data = await createPreference.mutateAsync({ plan: plan.id });
+      window.location.assign(data.initPoint);
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Não foi possível abrir o checkout agora.");
+    }
+  };
 
   return <div className="muse-site">
     {!promoClosed && <div className="promo-bar"><div className="promo-bar__inner"><Clock3 size={14} /><span className="promo-bar__copy">Condição especial de lançamento termina em</span><span className="promo-bar__copy promo-bar__copy--mobile">Termina em</span><div className="promo-countdown"><b>{h}</b><i>:</i><b>{m}</b><i>:</i><b>{s}</b></div><button onClick={() => scrollToSection("precos")}>Ver condição <ArrowRight size={13} /></button><button className="promo-close" aria-label="Fechar aviso de promoção" onClick={() => { sessionStorage.setItem(PROMO_CLOSED_KEY, "1"); document.documentElement.style.setProperty("--promo-h", "0px"); setPromoClosed(true); }}><X size={14} /></button></div></div>}
@@ -103,7 +114,7 @@ export default function Home() {
 
       <section className="testimonials-section" id="depoimentos"><div className="muse-container section-heading section-heading--center"><span className="section-kicker">Experiências reais</span><h2>O que dizem nossos<br /><em>profissionais</em></h2><p>Musicoterapeutas de todo o Brasil já estão transformando suas práticas com o MuseTera.</p></div><div className="muse-container testimonials-grid">{testimonials.map((item) => <article className="testimonial-card" key={item.name}><div className="testimonial-card__verified"><ShieldCheck size={14} /> Verificado</div><p className="testimonial-card__quote">“{item.quote}”</p><div className="testimonial-card__person"><span>{item.initials}</span><div><strong>{item.name}</strong><small>{item.role}</small></div></div><div className="testimonial-card__meta"><span>{item.years}</span><span>{item.city}</span><span>{item.specialty}</span></div></article>)}</div></section>
 
-      <section className="pricing-section" id="precos"><div className="muse-container section-heading section-heading--center"><span className="section-kicker">Planos que crescem com você</span><h2>Escolha o plano ideal<br /><em>para sua prática</em></h2><p>Todos os planos incluem suporte completo para você começar com tranquilidade.</p></div><div className="muse-container plans-grid">{plans.map((plan) => <article className={`plan-card ${plan.popular ? "plan-card--popular" : ""}`} key={plan.name}>{plan.popular && <span className="plan-popular">Mais Popular</span>}<div className="plan-card__top"><h3>{plan.name}</h3><span>{plan.detail}</span><p>{plan.description}</p></div><div className="plan-price"><strong>{plan.price}</strong><small>{plan.suffix}</small></div>{plan.popular && <div className="plan-offer">⚡ Restam apenas 5 vagas neste preço</div>}<div className="plan-guarantee">7 dias de garantia de reembolso</div><div className="plan-features">{plan.features.map((feature) => <span key={feature}><Check size={14} />{feature}</span>)}</div><button className={plan.popular ? "muse-button muse-button--gold" : "muse-button muse-button--outline"} onClick={() => scrollToSection("contato")}>Assinar Plano <ArrowRight size={14} /></button></article>)}</div></section>
+      <section className="pricing-section" id="precos"><div className="muse-container section-heading section-heading--center"><span className="section-kicker">Planos que crescem com você</span><h2>Escolha o plano ideal<br /><em>para sua prática</em></h2><p>Todos os planos incluem suporte completo para você começar com tranquilidade.</p></div><div className="muse-container plans-grid">{plans.map((plan) => <article className={`plan-card ${plan.popular ? "plan-card--popular" : ""}`} key={plan.name}>{plan.popular && <span className="plan-popular">Mais Popular</span>}<div className="plan-card__top"><h3>{plan.name}</h3><span>{plan.detail}</span><p>{plan.description}</p></div><div className="plan-price"><strong>{plan.price}</strong><small>{plan.suffix}</small></div>{plan.popular && <div className="plan-offer">⚡ Restam apenas 5 vagas neste preço</div>}<div className="plan-guarantee">7 dias de garantia de reembolso</div><div className="plan-features">{plan.features.map((feature) => <span key={feature}><Check size={14} />{feature}</span>)}</div><button className={plan.popular ? "muse-button muse-button--gold" : "muse-button muse-button--outline"} onClick={() => handleCheckout(plan)} disabled={createPreference.isPending}>{createPreference.isPending ? "Abrindo checkout..." : "Assinar Plano"} <ArrowRight size={14} /></button></article>)}</div></section>
 
       <section className="contact-section" id="contato"><div className="muse-container contact-inner"><div><span className="section-kicker">Pronto para começar?</span><h2>Mais tempo para cuidar.<br /><em>Fale com a equipe.</em></h2><p>Descubra como o MuseTera pode simplificar sua rotina e acompanhar o crescimento da sua prática.</p></div><div className="contact-card"><MessageCircle size={20} /><h3>Vamos conversar</h3><p>Estamos aqui para ajudar você a encontrar o plano ideal.</p><a href="mailto:portal.musetera@gmail.com">portal.musetera@gmail.com <ArrowRight size={14} /></a><a href="https://wa.me/5581986953506" target="_blank" rel="noreferrer"><MessageCircle size={14} /> WhatsApp</a></div></div></section>
     </main>
