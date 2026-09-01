@@ -1,6 +1,5 @@
-# Integração Mercado Pago
+# Correção do deploy Netlify
 
-- [x] Auditar o fluxo atual e confirmar os planos.
-- [x] Preparar backend e secrets sem expor credenciais.
-- [x] Implementar checkout e documentar webhook externalizado.
-- [x] Validar o fluxo sem realizar cobrança real.
+- [x] Auditar o diretório gerado pelo build e a configuração do Netlify.
+- [x] Corrigir o publish directory para o artefato real.
+- [x] Executar e verificar um novo deploy.
