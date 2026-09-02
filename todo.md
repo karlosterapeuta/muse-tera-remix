@@ -11,4 +11,4 @@
 
 - [x] Fazer commit e confirmar o novo SHA remoto em `github/main`.
 - [x] Validar a criação da preferência pelo endpoint real em ambiente com backend acessível.
-- [ ] Confirmar que o ambiente publicado usado pelo frontend expõe `/api/trpc` para o checkout.
+- [x] Confirmar que o ambiente publicado usado pelo frontend expõe `/api/trpc` para o checkout.
