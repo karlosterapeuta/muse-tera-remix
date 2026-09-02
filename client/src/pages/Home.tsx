@@ -4,10 +4,11 @@ import { ArrowRight, BarChart3, CalendarDays, Check, ChevronDown, ClipboardList,
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 
-const brandMark = "/manus-storage/musetera-logo-circular_1932db1d.png";
-const heroImage = "/manus-storage/musetera-musicoterapia-hero_c947579a.jpg";
-const dashboardAsset = "/manus-storage/musetera-dashboard-celular_e12da4c6.png";
-const heroVideo = "/manus-storage/musetera-hero-video_c5363dfd.mp4";
+const mediaOrigin = "https://musetera-ybjdwyyk.manus.space";
+const brandMark = `${mediaOrigin}/manus-storage/musetera-logo-circular_1932db1d.png`;
+const heroImage = `${mediaOrigin}/manus-storage/musetera-musicoterapia-hero_c947579a.jpg`;
+const dashboardAsset = `${mediaOrigin}/manus-storage/musetera-dashboard-celular_e12da4c6.png`;
+const heroVideo = `${mediaOrigin}/manus-storage/musetera-hero-video_c5363dfd.mp4`;
 const anamneseAsset = "https://muse-remix-magic.lovable.app/musetera-uploads/app-anamnese.png";
 const evolucaoAsset = "https://muse-remix-magic.lovable.app/musetera-uploads/app-evolucao.png";
 

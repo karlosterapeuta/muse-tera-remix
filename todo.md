@@ -12,3 +12,10 @@
 - [x] Fazer commit e confirmar o novo SHA remoto em `github/main`.
 - [x] Validar a criação da preferência pelo endpoint real em ambiente com backend acessível.
 - [x] Confirmar que o ambiente publicado usado pelo frontend expõe `/api/trpc` para o checkout.
+
+# Disponibilidade, domínio e assets
+
+- [ ] Auditar HTTP/DNS de `musetera.com.br` e `museterasite.netlify.app`.
+- [ ] Auditar referências e status HTTP da logo e do vídeo da hero.
+- [ ] Corrigir a publicação do domínio principal e os caminhos dos assets.
+- [ ] Republicar e validar desktop, mobile, logo, vídeo e rotas.
