@@ -15,7 +15,16 @@
 
 # Disponibilidade, domínio e assets
 
-- [ ] Auditar HTTP/DNS de `musetera.com.br` e `museterasite.netlify.app`.
-- [ ] Auditar referências e status HTTP da logo e do vídeo da hero.
-- [ ] Corrigir a publicação do domínio principal e os caminhos dos assets.
-- [ ] Republicar e validar desktop, mobile, logo, vídeo e rotas.
+- [x] Auditar HTTP/DNS de `musetera.com.br` e `museterasite.netlify.app`.
+- [x] Auditar referências e status HTTP da logo e do vídeo da hero.
+- [x] Corrigir a publicação do domínio principal e os caminhos dos assets.
+- [x] Republicar e validar desktop, mobile, logo, vídeo e rotas.
+- [x] Verificar o módulo `server/mercadopagoWebhook`: o erro era histórico de remoção; não há import ativo no servidor atual e a inicialização atual não reproduz a falha.
+- [x] Validar explicitamente a versão mobile publicada após o deploy final.
+- [x] Verificar as rotas publicadas relevantes além da home, incluindo fallback SPA, `/404` e links principais.
+- [x] Validar a versão mobile diretamente em um domínio publicado final com viewport reduzido e registrar evidência.
+- [x] Navegar ou clicar explicitamente nos links principais publicados e confirmar o comportamento esperado das âncoras, além de revalidar `/404` e fallback SPA no domínio final.
+- [x] Validar a home mobile diretamente no domínio publicado em viewport reduzido com inspeção de viewport, logo, hero, menu e overflow.
+- [x] Registrar evidência verificável da validação mobile publicada por screenshot legível ou checagem DOM específica.
+- [x] Validar a home mobile publicada com checagens DOM verificáveis de logo, hero, menu e largura do documento.
+- [x] Registrar no contexto a evidência mobile publicada por screenshot legível e/ou checagem DOM específica.
