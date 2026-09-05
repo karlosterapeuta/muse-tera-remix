@@ -42,5 +42,7 @@
 - [x] Revalidar visualmente o preview após registrar as exceções e confirmar o estado efetivo dos arquivos sincronizados.
 - [x] Validar em execução os botões e links de WhatsApp no preview, confirmando `https://wa.me/5581985436981`.
 - [x] Publicar a alteração do número de WhatsApp no preview/Netlify e registrar o deploy concluído.
-- [ ] Publicar a alteração do WhatsApp no ambiente final relevante, com deploy/commit registrado.
-- [ ] Revalidar no domínio público final que os links apontam para `https://wa.me/5581985436981` após a publicação.
+- [x] Publicar a alteração do WhatsApp no ambiente final relevante, com deploy/commit registrado.
+- [x] Revalidar no domínio público final que os links apontam para `https://wa.me/5581985436981` após a publicação.
+- [x] Publicar a alteração do WhatsApp no domínio final usado pelos usuários, Netlify e/ou `musetera.com.br`, com deploy registrado.
+- [x] Revalidar em execução no domínio público final todos os links e botões de WhatsApp.

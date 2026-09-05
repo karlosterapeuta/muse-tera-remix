@@ -7,3 +7,7 @@ Existe uma exceção técnica necessária ao ambiente Manus: a branch remota usa
 O arquivo remoto `client/src/components/SocialProofPurchases.tsx` não foi copiado para o preview porque contém nomes, cidades, planos e tempos de compras apresentados como fatos sem fonte verificável. A Home mantém a alternativa factual `ActivityNotifications`, que comunica campanha, teste, proteção de dados e organização da prática sem alegar vendas reais.
 
 Após a sincronização compatível, `pnpm install --frozen-lockfile`, `pnpm test`, `pnpm check` e `pnpm build` foram executados com sucesso. O preview voltou a responder em `https://3000-icsux4sjh857vb5unjctn-852ae397.us4.manus.computer` e foi capturado em viewport desktop.
+
+## Validação pública do WhatsApp
+
+Após o push para `github/main`, o domínio público `https://museterasite.netlify.app/` foi inspecionado em execução. Foram encontrados três links `wa.me`; todos apontam para `https://wa.me/5581985436981` com a mensagem pré-preenchida do MuseTera, e `allValid` retornou `true`.
