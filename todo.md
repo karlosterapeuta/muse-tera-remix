@@ -28,3 +28,19 @@
 - [x] Registrar evidência verificável da validação mobile publicada por screenshot legível ou checagem DOM específica.
 - [x] Validar a home mobile publicada com checagens DOM verificáveis de logo, hero, menu e largura do documento.
 - [x] Registrar no contexto a evidência mobile publicada por screenshot legível e/ou checagem DOM específica.
+- [x] Atualizar todos os links e botões do WhatsApp para `+55 81 98543-6981`.
+- [x] Validar os links, o build e publicar a alteração.
+
+# Sincronização da pré-visualização com GitHub
+
+- [x] Comparar a versão local, o preview e a branch `main` do GitHub.
+- [x] Sincronizar código, dependências e arquivos de configuração divergentes que são compatíveis com o preview.
+- [x] Reiniciar o preview e validar visualmente a versão sincronizada compatível.
+- [x] Ajustar a porta padrão de desenvolvimento para manter o preview gerenciado em 3000 sem remover o suporte a `PORT` e `--port`.
+- [x] Documentar explicitamente a exceção técnica: a porta padrão do preview fica em 3000, enquanto a branch GitHub usa fallback 8080; `PORT` e `--port` continuam suportados.
+- [x] Documentar que `client/src/components/SocialProofPurchases.tsx` não foi copiado porque contém notificações de compras não verificadas; manter a alternativa factual do preview.
+- [x] Revalidar visualmente o preview após registrar as exceções e confirmar o estado efetivo dos arquivos sincronizados.
+- [x] Validar em execução os botões e links de WhatsApp no preview, confirmando `https://wa.me/5581985436981`.
+- [x] Publicar a alteração do número de WhatsApp no preview/Netlify e registrar o deploy concluído.
+- [ ] Publicar a alteração do WhatsApp no ambiente final relevante, com deploy/commit registrado.
+- [ ] Revalidar no domínio público final que os links apontam para `https://wa.me/5581985436981` após a publicação.
