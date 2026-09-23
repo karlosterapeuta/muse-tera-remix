@@ -102,3 +102,15 @@
 .activity-notification > button:hover { background: rgba(255,255,255,.1); color: white; }
 @media (max-width: 560px) { .activity-notification { left: 14px; bottom: 76px; width: min(calc(100% - 28px), 300px); } }
 @media (prefers-reduced-motion: reduce) { .activity-notification { transition: none; } }
+
+/* WhatsApp: marca reconhecível, presença premium e convite discreto ao contato. */
+.floating-whatsapp { width: 58px; height: 58px; border: 1px solid rgba(255,255,255,.42); background: linear-gradient(145deg, #35d6ae 0%, #16a884 58%, #087e68 100%); box-shadow: 0 12px 28px rgba(4,72,67,.42), inset 0 1px 1px rgba(255,255,255,.36); transition: transform 180ms var(--ease), box-shadow 180ms var(--ease); }
+.floating-whatsapp:hover { transform: translateY(-5px) scale(1.06); box-shadow: 0 16px 34px rgba(4,72,67,.52), 0 0 0 5px rgba(53,214,174,.12), inset 0 1px 1px rgba(255,255,255,.42); }
+.floating-whatsapp:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+.whatsapp-icon { position: relative; z-index: 2; display: block; width: 29px; height: 29px; color: #fff; filter: drop-shadow(0 1px 1px rgba(0,0,0,.16)); }
+.floating-whatsapp__halo { position: absolute; inset: -7px; border: 1px solid rgba(53,214,174,.28); border-radius: 50%; pointer-events: none; }
+.floating-whatsapp__label { position: absolute; right: calc(100% + 11px); top: 50%; padding: 8px 11px; border: 1px solid rgba(119,199,187,.25); border-radius: 999px; background: rgba(7,20,38,.94); color: var(--cream); font-size: 10px; font-weight: 700; letter-spacing: .03em; white-space: nowrap; opacity: 0; transform: translate(5px, -50%); pointer-events: none; transition: opacity 180ms var(--ease), transform 180ms var(--ease); }
+.floating-whatsapp:hover .floating-whatsapp__label, .floating-whatsapp:focus-visible .floating-whatsapp__label { opacity: 1; transform: translate(0, -50%); }
+@media (prefers-reduced-motion: no-preference) { .floating-whatsapp__halo { animation: whatsapp-pulse 2.6s ease-out infinite; } }
+@keyframes whatsapp-pulse { 0%, 60%, 100% { opacity: .7; transform: scale(.92); } 30% { opacity: 0; transform: scale(1.18); } }
+@media (max-width: 560px) { .floating-whatsapp { right: 15px; bottom: 15px; width: 51px; height: 51px; } .whatsapp-icon { width: 26px; height: 26px; } .floating-whatsapp__label { display: none; } }
