@@ -32,7 +32,7 @@ describe("payments.createPreference", () => {
       preferenceId: "pref_test_123",
       initPoint: "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=pref_test_123",
     });
-    expect(request.body.items[0]?.unit_price).toBe(69.9);
+    expect(request.body.items[0]?.unit_price).toBe(34.9);
     expect(request.body.notification_url).toBe(process.env.MERCADOPAGO_WEBHOOK_URL);
     expect(request.body.back_urls).toEqual({
       success: "https://musetera.test/?payment=success",

@@ -8,9 +8,9 @@ import { ENV } from "./_core/env";
 import { TRPCError } from "@trpc/server";
 
 export const checkoutPlans = {
-  "30-days": { title: "MuseTera — Plano 30 dias", price: 69.9 },
-  "6-months": { title: "MuseTera — Plano 6 meses", price: 399 },
-  "12-months": { title: "MuseTera — Plano 12 meses", price: 699 },
+  "30-days": { title: "MuseTera — Plano 30 dias", price: 34.9 },
+  "6-months": { title: "MuseTera — Plano 6 meses", price: 199 },
+  "12-months": { title: "MuseTera — Plano 12 meses", price: 399 },
 } as const;
 
 const planSchema = z.object({ plan: z.enum(["30-days", "6-months", "12-months"]) });
