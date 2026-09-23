@@ -20,8 +20,7 @@ const navItems = [
 ];
 
 const PROMO_CLOSED_KEY = "musetera_promo_closed";
-const PROMO_END_AT = new Date("2026-12-01T23:59:59-03:00").getTime();
-const getPromoRemaining = () => Math.max(0, PROMO_END_AT - Date.now());
+const PROMO_DURATION_MS = 5 * 60 * 1000;
 const formatPromoTime = (ms: number) => { const total = Math.floor(ms / 1000); return { h: String(Math.floor(total / 3600)).padStart(2, "0"), m: String(Math.floor((total % 3600) / 60)).padStart(2, "0"), s: String(total % 60).padStart(2, "0") }; };
 
 const testimonials = [
@@ -87,8 +86,9 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFeature, setActiveFeature] = useState("dashboard");
   const [promoClosed, setPromoClosed] = useState(false);
-  const [promoRemaining, setPromoRemaining] = useState(getPromoRemaining());
-  useEffect(() => { if (typeof window === "undefined") return; if (sessionStorage.getItem(PROMO_CLOSED_KEY) === "1") { setPromoClosed(true); document.documentElement.style.setProperty("--promo-h", "0px"); return; } document.documentElement.style.setProperty("--promo-h", "42px"); setPromoRemaining(getPromoRemaining()); const timer = window.setInterval(() => setPromoRemaining(getPromoRemaining()), 1000); return () => { window.clearInterval(timer); document.documentElement.style.setProperty("--promo-h", "0px"); }; }, []);
+  const [promoEndsAt] = useState(() => Date.now() + PROMO_DURATION_MS);
+  const [promoRemaining, setPromoRemaining] = useState(() => PROMO_DURATION_MS);
+  useEffect(() => { if (typeof window === "undefined") return; if (sessionStorage.getItem(PROMO_CLOSED_KEY) === "1") { setPromoClosed(true); document.documentElement.style.setProperty("--promo-h", "0px"); return; } document.documentElement.style.setProperty("--promo-h", "74px"); const updateRemaining = () => setPromoRemaining(Math.max(0, promoEndsAt - Date.now())); updateRemaining(); const timer = window.setInterval(updateRemaining, 1000); return () => { window.clearInterval(timer); document.documentElement.style.setProperty("--promo-h", "0px"); }; }, [promoEndsAt]);
   const { h, m, s } = formatPromoTime(promoRemaining);
   const featureSrc = activeFeature === "anamnese" ? anamneseAsset : activeFeature === "evolucao" ? evolucaoAsset : dashboardAsset;
   const createPreference = trpc.payments.createPreference.useMutation();
@@ -102,7 +102,7 @@ export default function Home() {
   };
 
   return <div className="muse-site">
-    {!promoClosed && <div className="promo-bar"><div className="promo-bar__inner"><Clock3 size={14} /><span className="promo-bar__copy">Condição especial de lançamento termina em</span><span className="promo-bar__copy promo-bar__copy--mobile">Termina em</span><div className="promo-countdown"><b>{h}</b><i>:</i><b>{m}</b><i>:</i><b>{s}</b></div><button onClick={() => scrollToSection("precos")}>Ver condição <ArrowRight size={13} /></button><button className="promo-close" aria-label="Fechar aviso de promoção" onClick={() => { sessionStorage.setItem(PROMO_CLOSED_KEY, "1"); document.documentElement.style.setProperty("--promo-h", "0px"); setPromoClosed(true); }}><X size={14} /></button></div></div>}
+    {!promoClosed && <div className="promo-bar"><div className="promo-bar__inner"><Clock3 size={14} /><span className="promo-bar__copy">Sua condição especial termina em</span><span className="promo-bar__copy promo-bar__copy--mobile">Oferta termina em</span><div className="promo-countdown"><b>{h}</b><i>:</i><b>{m}</b><i>:</i><b>{s}</b></div><button className="promo-offer-cta" onClick={() => scrollToSection("precos")}>Aproveitar Oferta <ArrowRight size={13} /></button><button className="promo-close" aria-label="Fechar aviso de promoção" onClick={() => { sessionStorage.setItem(PROMO_CLOSED_KEY, "1"); document.documentElement.style.setProperty("--promo-h", "0px"); setPromoClosed(true); }}><X size={14} /></button></div></div>}
     <header className={`muse-header ${!promoClosed ? "muse-header--with-promo" : ""}`}><a href="#home" className="muse-brand"><span className="muse-brand__mark"><img src={brandMark} alt="" /></span><span><strong>MuseTera</strong><small>GESTÃO PARA MUSICOTERAPEUTAS</small></span></a><nav className={`muse-nav ${menuOpen ? "muse-nav--open" : ""}`}>{navItems.map((item) => <a href={`#${item.id}`} key={item.id} onClick={() => setMenuOpen(false)}>{item.label}</a>)}<button className="header-login" onClick={() => window.open("https://portal.musetera.com.br/login", "_top")}>Acessar sistema <ArrowRight size={14} /></button></nav><button className="muse-menu" onClick={() => setMenuOpen((open) => !open)} aria-label="Abrir menu" aria-expanded={menuOpen}>{menuOpen ? <X size={21} /> : <Menu size={21} />}</button></header>
 
     <main>

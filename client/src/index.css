@@ -124,3 +124,22 @@
 .promo-countdown b:nth-of-type(3) { border-color: rgba(255,181,160,.58); background: linear-gradient(145deg, #ffb49e, #ef786e); }
 .promo-countdown i { color: #fff2cf; font-size: 15px; font-weight: 900; text-shadow: 0 0 8px rgba(255,231,164,.45); }
 @media (max-width: 560px) { .promo-countdown { gap: 3px; padding: 2px 4px; border-radius: 8px; }.promo-countdown b { min-width: 28px; padding: 5px 3px; font-size: 11px; }.promo-countdown i { font-size: 11px; } }
+
+/* Promoção de 5 minutos: CTA abaixo do contador, sem cobrir a navegação. */
+.promo-bar { height: 74px; }
+.promo-bar__inner { display: grid; grid-template-columns: auto 1fr auto; grid-template-rows: 38px 30px; gap: 0 12px; align-content: center; }
+.promo-bar__inner > svg { grid-column: 1; grid-row: 1; align-self: center; }
+.promo-bar__copy { grid-column: 2; grid-row: 1; align-self: center; }
+.promo-countdown { grid-column: 3; grid-row: 1; align-self: center; }
+.promo-offer-cta { grid-column: 1 / -1; grid-row: 2; justify-self: center; margin: 0 !important; padding: 6px 18px !important; background: linear-gradient(135deg, #ffe5a4, #e8b85f) !important; box-shadow: 0 5px 14px rgba(232,197,126,.22); }
+.promo-offer-cta:hover { background: linear-gradient(135deg, #fff0c4, #f0c975) !important; box-shadow: 0 7px 18px rgba(232,197,126,.32); }
+.muse-header--with-promo { top: 74px; }
+@media (max-width: 560px) {
+  .promo-bar { height: 82px; }
+  .promo-bar__inner { grid-template-columns: auto 1fr auto; grid-template-rows: 40px 34px; gap: 0 5px; width: calc(100% - 36px); padding-right: 32px; }
+  .promo-bar__inner > svg { grid-column: 1; }
+  .promo-bar span.promo-bar__copy--mobile { grid-column: 2; grid-row: 1; }
+  .promo-countdown { grid-column: 3; grid-row: 1; }
+  .promo-offer-cta { grid-column: 1 / -1; grid-row: 2; padding: 6px 14px !important; font-size: 9px !important; }
+  .muse-header--with-promo { top: 82px; }
+}
