@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, BarChart3, Check, ChevronDown, ClipboardList, Clock3, HeartHandshake, Menu, MessageCircle, Music2, Play, ShieldCheck, Sparkles, UsersRound, X } from "lucide-react";
 import { toast } from "sonner";
-import { trpc } from "@/lib/trpc";
 
 const mediaOrigin = "https://musetera-ybjdwyyk.manus.space";
 const brandMark = `${mediaOrigin}/manus-storage/musetera-logo-circular_1932db1d.png`;
@@ -91,13 +90,29 @@ export default function Home() {
   useEffect(() => { if (typeof window === "undefined") return; if (sessionStorage.getItem(PROMO_CLOSED_KEY) === "1") { setPromoClosed(true); document.documentElement.style.setProperty("--promo-h", "0px"); return; } document.documentElement.style.setProperty("--promo-h", "74px"); const updateRemaining = () => setPromoRemaining(Math.max(0, promoEndsAt - Date.now())); updateRemaining(); const timer = window.setInterval(updateRemaining, 1000); return () => { window.clearInterval(timer); document.documentElement.style.setProperty("--promo-h", "0px"); }; }, [promoEndsAt]);
   const { h, m, s } = formatPromoTime(promoRemaining);
   const featureSrc = activeFeature === "anamnese" ? anamneseAsset : activeFeature === "evolucao" ? evolucaoAsset : dashboardAsset;
-  const createPreference = trpc.payments.createPreference.useMutation();
+  const [checkoutBusy, setCheckoutBusy] = useState(false);
   const handleCheckout = async (plan: (typeof plans)[number]) => {
+    if (checkoutBusy) return;
+    setCheckoutBusy(true);
     try {
-      const data = await createPreference.mutateAsync({ plan: plan.id });
-      window.location.assign(data.initPoint);
+      const response = await fetch("/api/payments/create-preference", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plan: plan.id }),
+      });
+      const data = await response.json() as { initPoint?: string; error?: string };
+      if (!response.ok || !data.initPoint) {
+        throw new Error(data.error || "Não foi possível abrir o checkout agora.");
+      }
+      const checkoutUrl = new URL(data.initPoint);
+      if (checkoutUrl.protocol !== "https:" || !/(^|\\.)mercadopago\\.com(\\.br)?$/.test(checkoutUrl.hostname)) {
+        throw new Error("Link de pagamento inválido.");
+      }
+      window.location.assign(checkoutUrl.href);
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Não foi possível abrir o checkout agora.");
+    } finally {
+      setCheckoutBusy(false);
     }
   };
 
